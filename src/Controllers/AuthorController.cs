@@ -26,11 +26,11 @@ namespace CasaCodigo.Controller
         }
         [HttpGet]
         [Route("{id:guid}")]
-        public async Task<ActionResult<AuthorModel>> GetAuthorById(Guid id)
+        public async Task<ActionResult<Response>> GetAuthorById(Guid id)
         {
             var author = await _repository.GetById(id);
             if (author == null) return NotFound(new {message = "Author não encontrado"});
-            return Ok(AuthorModel.ToModel(author));
+            return Ok(ResponseHelper.CreateResponse("Usuário encontrado",AuthorModel.ToModel(author)));
         }
 
         [HttpPost]

@@ -19,13 +19,13 @@ namespace CasaCodigo.Controller
         }
         [HttpGet]
         [Route("{id:guid}")]
-        public async Task<ActionResult<CategoryModel>> GetCategoryById(Guid id)
+        public async Task<ActionResult<Response>> GetCategoryById(Guid id)
         {
             var model =  (CategoryModel)(await _repository.GetById(id));
             return Ok(model);
         }
         [HttpPost]
-        public async Task<ActionResult<CategoryModel>> CreateCategory(CategoryModel model)
+        public async Task<ActionResult<Response>> CreateCategory(CategoryModel model)
         {
             var category = model.ToEntity();
 
