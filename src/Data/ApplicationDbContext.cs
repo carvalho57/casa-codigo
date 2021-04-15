@@ -1,3 +1,4 @@
+using System.Reflection;
 using CasaCodigo.Data.Mapping;
 using CasaCodigo.Entities;
 using Flunt.Notifications;
@@ -12,10 +13,11 @@ namespace CasaCodigo.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);             
-            modelBuilder.Ignore<Notification>();            
-            modelBuilder.ApplyConfiguration(new AuthorMapping());
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Ignore<Notification>();
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());            
         }
-            public DbSet<Author> Authors { get; private set; }
+        public DbSet<Author> Authors { get; private set; }
+        public DbSet<Category> Categories { get; private set; }
     }
 }
