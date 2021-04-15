@@ -23,6 +23,7 @@ namespace CasaCodigo
         {
             services.AddDbContext<ApplicationDbContext>(opt => opt.UseInMemoryDatabase("database"));
             services.AddScoped<IAuthorRepository, AuthorRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddControllers();
         }     
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
