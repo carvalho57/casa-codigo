@@ -6,6 +6,10 @@ namespace CasaCodigo.Helpers
 {
     public static class ResponseHelper
     {        
+        public static Response CreateResponse(string message)
+        {
+            return new Response(message);
+        }
         public static Response CreateResponse(string message, IEnumerable<Notification> notifications)
         {
             return new Response(message, notifications);

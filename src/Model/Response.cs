@@ -5,6 +5,10 @@ namespace CasaCodigo.Models
 {
     public class Response
     {
+        public Response(string message)
+        {
+            Message = message;
+        }
         public Response(string message, IEnumerable<Notification> errors)
         {
             Message = message;
