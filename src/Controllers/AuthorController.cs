@@ -56,7 +56,7 @@ namespace CasaCodigo.Controller
             return CreatedAtAction(
                 nameof(GetAuthorById),
                 new { id = author.Id },
-                ResponseHelper.CreateResponse("Autor cadastrado com sucesso", model));
+                ResponseHelper.CreateResponse("Autor cadastrado com sucesso", AuthorModel.ToModel(author)));
         }
     }
 }
