@@ -6,6 +6,7 @@ namespace CasaCodigo.Models
 {
     public class AuthorModel
     {                     
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Email { get;  set; }
         public string Description { get; set; }
@@ -19,6 +20,7 @@ namespace CasaCodigo.Models
         {
             return new AuthorModel
             {
+                Id = author.Id,
                 Name = author.Name.Value,
                 Email = author.Email.Address,
                 Description = author.Description.Value
