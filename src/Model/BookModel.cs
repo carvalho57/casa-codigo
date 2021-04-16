@@ -6,6 +6,7 @@ namespace CasaCodigo.Models
 {
     public class BookModel
     {
+        public Guid Id { get; set; }
         public string ISBN { get; set; }
         public string Title { get; set; }
         public string Summary { get; set; }
@@ -21,8 +22,15 @@ namespace CasaCodigo.Models
 
         public static BookModel ToModel(Book book)
         {
+            if(book == null)
+            {
+                Console.WriteLine("nullreference");
+                return new BookModel();
+            }
+
             return new BookModel()
             {
+                Id = book.Id,
                 AuthorId = book.Author.Id,
                 AuthorName = book.Author.Name.Value,
                 CategoryId = book.Category.Id,

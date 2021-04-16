@@ -8,7 +8,7 @@ namespace CasaCodigo.Data.Repositories
     public interface IBookRepository 
     {
         void Add(Book book);
-        List<Book> GetAll();
+        Task<List<Book>> GetAll();
         Task<bool> BookExist(Book book);
         Task<(Author, Category)> GetCategoryAndAuthor(Guid author, Guid category);
         Task<Book> GetBookById(Guid id);

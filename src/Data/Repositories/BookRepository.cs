@@ -27,14 +27,14 @@ namespace CasaCodigo.Data.Repositories
             return await _context.Books.AnyAsync(b => b.ISBN == book.ISBN || b.Title == book.Title);
         }
 
-        public List<Book> GetAll()
+        public async Task<List<Book>> GetAll()
         {
-            return  _context.Books.ToList();
+            return  await _context.Books.AsNoTracking().Include(b => b.Category).Include(b => b.Author).ToListAsync();
         }
 
         public async Task<Book> GetBookById(Guid id)
         {
-            return await _context.Books.FirstOrDefaultAsync(b => b.Id == id);
+            return await _context.Books.AsNoTracking().Include(b => b.Category).Include(b => b.Author).FirstOrDefaultAsync(b => b.Id == id);
         }
 
         public async Task<(Author, Category)> GetCategoryAndAuthor(Guid authorId, Guid categoryId)
@@ -44,7 +44,7 @@ namespace CasaCodigo.Data.Repositories
                                 where author.Id == authorId && author.Id == authorId
                                 select new { author, category })
                                 .FirstOrDefaultAsync();
-            return (result.author, result.category);
+            return (result?.author, result?.category);
         }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using CasaCodigo.Data.Repositories;
 using CasaCodigo.Helpers;
@@ -19,9 +20,23 @@ namespace CasaCodigo.Controller
         }
 
         [HttpGet]
+        [Route("")]
+        public async Task<ActionResult<Response>> GetAll()
+        {
+            var books = await _repository.GetAll();
+            var booksReturn = books?.Select(b => (BookModel)b).ToList();
+            return Ok(ResponseHelper.CreateResponse("Todos os livros encontrados",booksReturn));            
+        }
+
+        [HttpGet]
+        [Route("{id:guid}")]
         public async Task<ActionResult<Response>> GetBookById(Guid id)
         {
-            return Ok(ResponseHelper.CreateResponse("Livro encontrado", await _repository.GetBookById(id)));
+            var book =  await _repository.GetBookById(id);
+
+            if(book == null) return NotFound(ResponseHelper.CreateResponse("Livro não encontrado"));
+
+            return Ok(ResponseHelper.CreateResponse("Livro encontrado",(BookModel)book));
         }
 
         [HttpPost]
@@ -29,7 +44,7 @@ namespace CasaCodigo.Controller
         {
             var (category, author) = await _repository.GetCategoryAndAuthor(model.AuthorId, model.CategoryId);
 
-            if(category == null || author == null)
+            if (category == null || author == null)
             {
                 return NotFound(
                     ResponseHelper
@@ -45,7 +60,7 @@ namespace CasaCodigo.Controller
                     ResponseHelper
                         .CreateResponse("Informações inválidas para criar um livro", book.Notifications)
                     );
-            }            
+            }
 
             if (await _repository.BookExist(book))
             {
