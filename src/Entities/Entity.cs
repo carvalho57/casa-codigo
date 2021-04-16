@@ -19,12 +19,17 @@ namespace CasaCodigo.Entities
             if (ReferenceEquals(other, this))
                 return true;
             
-            return Id.Equals(other.Id);
+            return EqualsCore(other);
+        }
+
+        protected virtual bool EqualsCore(object other)
+        {
+            return Id.Equals(((Entity)other).Id);
         }
 
         public override int GetHashCode()
         {
             return Id.GetHashCode();
-        }
+        }        
     }
 }
