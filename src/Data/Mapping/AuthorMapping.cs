@@ -27,6 +27,9 @@ namespace CasaCodigo.Data.Mapping
                     .IsRequired()
                     .HasColumnName("Email");
             });
+            builder.HasMany(author => author.Books)
+                .WithOne(book => book.Author)
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

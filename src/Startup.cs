@@ -25,6 +25,9 @@ namespace CasaCodigo
             services.AddScoped<IAuthorRepository, AuthorRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IBookRepository, BookRepository>();
+            services.AddScoped<IStateRepository, StateRepository>();
+            services.AddScoped<ICountryRepository,CountryRepository>();
+
             services.AddControllers();
         }     
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
