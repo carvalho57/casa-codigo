@@ -41,6 +41,6 @@ namespace CasaCodigo.Entities
         public short NumberPages { get; private set; }
         public DateTime ReleaseDate { get; private set; }
         public Category Category { get; private set; }
-        public Author Author { get; set; }       
+        public Author Author { get; private set; }       
     }
 }
