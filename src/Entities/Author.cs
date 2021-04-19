@@ -1,10 +1,11 @@
 using System;
+using System.Collections.Generic;
 using CasaCodigo.ValueObjects;
 using Flunt.Notifications;
 using Flunt.Validations;
 
 namespace CasaCodigo.Entities
-{    
+{
     public class Author : Entity
     {
         private Author() { } // EF CORE
@@ -14,7 +15,7 @@ namespace CasaCodigo.Entities
                 throw new ArgumentNullException();
 
             AddNotifications(new Contract().Join(name, email, description));
-            
+
             Name = name;
             Email = email;
             Description = description;
@@ -25,6 +26,9 @@ namespace CasaCodigo.Entities
         public Email Email { get; private set; }
         public AuthorDescription Description { get; private set; }
         public DateTime CreateDate { get; private set; }
+        private List<Book> _books { get; set; }
+        public IEnumerable<Book> Books => _books.AsReadOnly();
+
 
         public void ChangeEmail(Email email)
         {
