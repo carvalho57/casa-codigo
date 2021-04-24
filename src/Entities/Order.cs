@@ -27,12 +27,13 @@ namespace CasaCodigo.Entities
                 return total - (total * (Discount/100));
             }
         }
-        public void ApplyCoupon(Coupon coupon){
-            if(coupon == null || coupon.Invalid) {
-                AddNotification("Coupun", "O cupom esta inválido.");
-                return;
-            }
-            Discount = (decimal)coupon.Percentage;
+        public void ApplyCoupon(Coupon coupon){            
+            AddNotifications(new Contract().Requires()
+                .IsNotNull(coupon, nameof(Discount), "O cupom está inválido")
+                .IsTrue(coupon.IsValid(), nameof(Discount), "O cupom está expirado")
+            );
+            if(Valid)
+                Discount = (decimal)coupon.Percentage;
         }
         public void AddItem(OrderItem item)
         {

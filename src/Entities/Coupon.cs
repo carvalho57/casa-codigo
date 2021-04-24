@@ -32,9 +32,9 @@ namespace CasaCodigo.Entities
             return Valid;
         }
 
-        private bool IsValid()
+        public bool IsValid()
         {
-            return ExpiryDate > DateTime.UtcNow;
+            return ExpiryDate >= DateTime.UtcNow;
         }
     }
 }
