@@ -14,7 +14,6 @@ namespace CasaCodigo.Services
         private readonly ICountryRepository _countryRepository;
         private readonly IStateRepository _stateRepository;
         private readonly IBookRepository _bookRepository;   
-        private readonly ICustomerRepository _customerRepository;
         private readonly IOrderRepository _orderRepository;
 
         public OrderHandler(ICountryRepository countryRepository, IStateRepository stateRepository, IBookRepository bookRepository, IOrderRepository orderRepository)

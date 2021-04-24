@@ -29,6 +29,8 @@ namespace CasaCodigo
             services.AddScoped<IStateRepository, StateRepository>();
             services.AddScoped<ICountryRepository,CountryRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<ICouponRepository, CouponRepository>();
+            
             services.AddScoped<OrderHandler, OrderHandler>();
 
             services.AddControllers();

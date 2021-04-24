@@ -23,6 +23,6 @@ namespace CasaCodigo.Data
         public DbSet<State> States { get; private set; }
         public DbSet<Country> Countries { get; private set; }
         public DbSet<Order> Orders { get; private set; }
-        
+        public DbSet<Coupon> Coupons { get; private set; }
     }
 }
