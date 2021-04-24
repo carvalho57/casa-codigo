@@ -14,7 +14,11 @@ namespace CasaCodigo.Helpers
         {
             return new Response(message, notifications);
         }
-
+        
+        public static Response CreateResponse(string message, object data, IEnumerable<Notification> notifications)
+        {
+            return new Response(message, data,notifications);
+        }
         public static Response CreateResponse(string message, object data)
         {
             return new Response(message, data);
