@@ -19,6 +19,13 @@ namespace CasaCodigo.Models
             Message = message;
         }
 
+        public Output(bool sucess, string message, IReadOnlyCollection<Notification> notifications)
+        {
+            Notifications = notifications;
+            Sucess = sucess;
+            Message = message;
+        }
+
         public bool Sucess { get; private set; }
         public string Message { get; private set; }
         public object Data { get; private set; }

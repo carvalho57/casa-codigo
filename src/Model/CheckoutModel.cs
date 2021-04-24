@@ -24,11 +24,14 @@ namespace CasaCodigo.Models
         public string CEP { get; set; }
         public string Phone { get; set; }
         public OrderModel Order { get; set; }        
+        public string CouponCode { get; set; }
         public bool SaveInformations { get; set; }
         public bool Validate()
         {
             Order.Validate();
-            AddNotifications(new Contract().Requires().Join(Order));
+            AddNotifications(new Contract()
+                .Requires()                
+                .Join(Order));
             return Valid;
         }   
     }

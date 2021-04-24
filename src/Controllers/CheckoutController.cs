@@ -34,7 +34,7 @@ namespace CasaCodigo.Controller
             var output = await _handler.Handle(model);
 
             if (!output.Sucess)
-                return BadRequest(ResponseHelper.CreateResponse(output.Message, output.Data, output.Notifications));
+                return BadRequest(ResponseHelper.CreateResponse(output.Message, output.Notifications));
 
             return CreatedAtAction(nameof(GetOrderById), new {id = ((Order)output.Data).Id}, "Pedido realizado com sucesso");
         }
