@@ -33,6 +33,6 @@ namespace CasaCodigo.Models
                 .Requires()                
                 .Join(Order));
             return Valid;
-        }   
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace CasaCodigo.Entities
             AddNotifications(new Contract().Requires().IfNotNull(customer, order => order.Join(customer)));
             Customer = customer;
         }
-        private List<OrderItem> _items { get; set; } = new List<OrderItem>();
+        private List<OrderItem> _items = new List<OrderItem>();
         public IEnumerable<OrderItem> Items => _items.AsReadOnly();
         public Customer Customer { get; private set; }
         public decimal Discount { get; private set; }

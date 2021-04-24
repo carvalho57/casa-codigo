@@ -1,5 +1,7 @@
+using CasaCodigo.Entities;
 using Flunt.Notifications;
 using Flunt.Validations;
+using System;
 using System.Collections.Generic;
 
 namespace CasaCodigo.Models
@@ -26,5 +28,6 @@ namespace CasaCodigo.Models
             });
             return Valid;
         }
+
     }
 }
