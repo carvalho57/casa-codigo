@@ -12,5 +12,6 @@ namespace CasaCodigo.Data.Repositories
         Task<bool> BookExist(Book book);
         Task<(Author, Category)> GetCategoryAndAuthor(Guid author, Guid category);
         Task<Book> GetBookById(Guid id);
+        List<Book> Get(IEnumerable<Guid> ids);
     }
 }

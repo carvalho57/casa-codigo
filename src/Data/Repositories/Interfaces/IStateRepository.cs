@@ -8,5 +8,6 @@ namespace CasaCodigo.Data.Repositories
     {
         void Add(State state);
         Task<bool> StateExist(State state);
+        Task<State> GetStateById(Guid state, bool include = false);
     }
 }

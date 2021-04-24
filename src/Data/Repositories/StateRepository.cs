@@ -21,6 +21,14 @@ namespace CasaCodigo.Data.Repositories
             _context.SaveChanges();
         }
 
+        public async Task<State> GetStateById(Guid state, bool include = false)
+        {
+            var expression = _context.States.AsNoTracking();
+            expression = include ? expression.Include(c => c.Country) : expression;
+
+            return await expression.FirstOrDefaultAsync();
+        }
+
         public Task<bool> StateExist(State state)
         {
             return _context.States.AnyAsync(s => s.Name == state.Name && s.Country.Name == state.Country.Name);
