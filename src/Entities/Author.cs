@@ -26,7 +26,7 @@ namespace CasaCodigo.Entities
         public Email Email { get; private set; }
         public AuthorDescription Description { get; private set; }
         public DateTime CreateDate { get; private set; }
-        private List<Book> _books { get; set; }
+        private List<Book> _books = new List<Book>();
         public IEnumerable<Book> Books => _books.AsReadOnly();
 
 
