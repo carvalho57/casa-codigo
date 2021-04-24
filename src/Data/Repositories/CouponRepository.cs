@@ -22,9 +22,25 @@ namespace CasaCodigo.Data.Repositories
             _context.SaveChanges();
         }
 
+        public void Edit(Coupon couponToEdit)
+        {
+            _context.Entry(couponToEdit).State = EntityState.Modified;
+            _context.SaveChanges();
+        }
+
         public bool Exist(Coupon newCoupon)
         {
-            return _context.Coupons.Any(c => c.Code == newCoupon.Code);
+            return _context.Coupons.Where(c => c.Id != newCoupon.Id).Any(c => c.Code == newCoupon.Code);
+        }
+
+        public Coupon GetByCode(string code)
+        {
+            return _context.Coupons.AsNoTracking().FirstOrDefault(c => c.Code == code);
+        }
+
+        public Coupon GetById(Guid id)
+        {
+            return _context.Coupons.AsNoTracking().FirstOrDefault(x => x.Id == id);
         }
     }
 }

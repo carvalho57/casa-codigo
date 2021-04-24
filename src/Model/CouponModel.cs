@@ -6,7 +6,7 @@ using Flunt.Validations;
 namespace CasaCodigo.Models
 {
     public class CouponModel : Input
-    {        
+    {             
         public string Code { get; set; }
         public float Percentage { get; set; }
         public DateTime ExpiryDate { get; set; }

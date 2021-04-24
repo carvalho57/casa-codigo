@@ -7,10 +7,15 @@ namespace CasaCodigo.Entities
     {
         public string Code { get; private set; }
         public double Percentage { get; private set; }
-        public DateTime ExpiryDate { get; }
+        public DateTime ExpiryDate { get; private set; }
 
         private Coupon() { }
         public Coupon(string code, double percentage, DateTime expirydate)
+        {
+            ChangeInfo(code, percentage,expirydate);
+        }
+
+        public bool ChangeInfo(string code, double percentage, DateTime expirydate)
         {
             AddNotifications(new Contract()
                 .Requires()
@@ -23,6 +28,8 @@ namespace CasaCodigo.Entities
             Code = code;
             Percentage = percentage;
             ExpiryDate = expirydate;
+
+            return Valid;
         }
 
         private bool IsValid()
