@@ -22,6 +22,7 @@ namespace CasaCodigo.Data
         public DbSet<Book> Books {get;private set;}
         public DbSet<State> States { get; private set; }
         public DbSet<Country> Countries { get; private set; }
-        public DbSet<Order> Order { get; private set; }
+        public DbSet<Order> Orders { get; private set; }
+        
     }
 }

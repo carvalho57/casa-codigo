@@ -12,7 +12,7 @@ namespace CasaCodigo.Data.Repositories
         }
         public void Add(Order order)
         {
-            _context.Order.Add(order);        
+            _context.Orders.Add(order);        
             _context.SaveChanges();
         }
     }
