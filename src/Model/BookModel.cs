@@ -4,7 +4,7 @@ using CasaCodigo.ValueObjects;
 
 namespace CasaCodigo.Models
 {
-    public class BookModel
+    public class BookModel : Input
     {
         public Guid Id { get; set; }
         public string ISBN { get; set; }

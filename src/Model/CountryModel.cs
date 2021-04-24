@@ -5,7 +5,7 @@ using CasaCodigo.Entities;
 
 namespace CasaCodigo.Models
 {
-    public class CountryModel
+    public class CountryModel : Input
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

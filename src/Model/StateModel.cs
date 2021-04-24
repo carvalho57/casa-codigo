@@ -4,7 +4,7 @@ using CasaCodigo.Entities;
 
 namespace CasaCodigo.Models
 {
-    public class StateModel 
+    public class StateModel : Input
     {        
         public Guid Id { get; set; }
         public string Name { get; set; }
