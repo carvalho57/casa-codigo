@@ -1,5 +1,6 @@
 using CasaCodigo.Data;
 using CasaCodigo.Data.Repositories;
+using CasaCodigo.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +28,8 @@ namespace CasaCodigo
             services.AddScoped<IBookRepository, BookRepository>();
             services.AddScoped<IStateRepository, StateRepository>();
             services.AddScoped<ICountryRepository,CountryRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<OrderHandler, OrderHandler>();
 
             services.AddControllers();
         }     
