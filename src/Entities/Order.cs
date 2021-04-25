@@ -38,7 +38,7 @@ namespace CasaCodigo.Entities
         {
             AddNotifications(new Contract().Requires()
                 .IsNotNull(coupon, nameof(Discount), "O cupom está inválido")
-                .IsTrue(coupon.IsValid(), nameof(Discount), "O cupom está expirado")
+                .IfNotNull(coupon, x => x.IsTrue(coupon.IsValid(), nameof(Discount), "O cupom está expirado"))
             );
             if (Valid)
                 Discount = (decimal)coupon.Percentage;
