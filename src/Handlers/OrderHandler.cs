@@ -73,7 +73,7 @@ namespace CasaCodigo.Services
 
             foreach (var item in model.Order.Items)
             {
-                var book = books.FirstOrDefault(x => x.Id == item.ItemId);
+                var book = books?.FirstOrDefault(x => x.Id == item.ItemId);
                 order.AddItem(new OrderItem(book, item.Quantity));
             }
 
